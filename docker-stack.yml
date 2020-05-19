@@ -1,0 +1,16 @@
+version: "3"
+services:
+
+  webapp:
+    image: testapp:1.0
+    ports:
+      - 8081:8080
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://webapp:8080/health"]
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
