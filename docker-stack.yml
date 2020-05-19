@@ -2,14 +2,14 @@ version: "3"
 services:
 
   webapp:
-    image: testapp:1.0
+    image: testapp:broken
     ports:
       - 8081:8080
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://webapp:8080/health"]
-      interval: 5s
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 20s
       timeout: 2s
-      retries: 3
+      retries: 1
     deploy:
       replicas: 1
       update_config:

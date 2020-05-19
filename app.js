@@ -17,9 +17,9 @@ router.get("/",function(req,res){
   res.sendFile(path + "index.html");
 });
 
-router.get("/health",function(req,res){
-    res.json({status: 'UP'});
-});
+// router.get("/health",function(req,res){
+//     res.json({status: 'UP'});
+// });
 
 app.use(express.static(path));
 app.use("/", router);
