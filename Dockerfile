@@ -18,3 +18,5 @@ CMD [ "npm", "start" ]
 
 # Copy the rest of your app's source code from your host to your image filesystem.
 COPY . .
+
+#HEALTHCHECK --interval=10s --timeout=3s CMD curl --fail http://localhost:8080/health || exit 1
