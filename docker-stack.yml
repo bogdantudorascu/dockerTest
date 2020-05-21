@@ -2,20 +2,17 @@ version: "3.8"
 services:
 
   webapp:
-    image: testapp:2.0
+    image: testapp:broken
     ports:
       - 8081:8080
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 10s
       timeout: 2s
-      retries: 3
-      start_period: 2s
+      retries: 1
     deploy:
       replicas: 1
       update_config:
-        parallelism: 2
-        delay: 10s
         failure_action: rollback
         order: start-first
       restart_policy:
